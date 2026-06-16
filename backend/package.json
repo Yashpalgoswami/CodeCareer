@@ -1,0 +1,32 @@
+{
+  "name": "codecareer-backend",
+  "version": "1.0.0",
+  "description": "CodeCareer backend API",
+  "main": "src/server.js",
+  "scripts": {
+    "dev": "node src/server.js",
+    "start": "node src/server.js",
+    "migrate": "node scripts-migrate.js",
+    "lint": "node --check src/server.js src/routes/*.js src/controllers/*.js src/services/*.js src/db/*.js src/middleware/*.js",
+    "test": "vitest run"
+  },
+  "keywords": [
+    "express",
+    "sqlite",
+    "resume",
+    "job-matching"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "multer": "^2.2.0",
+    "pdf-parse": "^2.4.5",
+    "sqlite3": "^6.0.1"
+  },
+  "devDependencies": {
+    "supertest": "^7.2.2",
+    "vitest": "^4.1.9"
+  }
+}
