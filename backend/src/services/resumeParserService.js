@@ -1,4 +1,3 @@
-const fs = require('node:fs');
 const pdfParse = require('pdf-parse');
 
 const COMMON_SKILLS = [
@@ -48,15 +47,14 @@ function extractSkills(text) {
   return Array.from(detected).sort();
 }
 
-async function parseResumeFile(filePath, mimeType) {
-  const buffer = fs.readFileSync(filePath);
+async function parseResumeFile(fileBuffer, mimeType, filename = '') {
   let text;
 
-  if (mimeType === 'application/pdf' || filePath.toLowerCase().endsWith('.pdf')) {
-    const parsed = await pdfParse(buffer);
+  if (mimeType === 'application/pdf' || filename.toLowerCase().endsWith('.pdf')) {
+    const parsed = await pdfParse(fileBuffer);
     text = parsed.text;
   } else {
-    text = buffer.toString('utf8');
+    text = fileBuffer.toString('utf8');
   }
 
   const normalizedText = normalizeText(text);
